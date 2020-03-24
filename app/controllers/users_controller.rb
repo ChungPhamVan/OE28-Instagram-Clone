@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def update
     params[:user][:gender] = params[:user][:gender].to_i
+    params[:user][:status] = params[:user][:status].to_i
     if @user.update_user user_params_update
       flash[:success] = t ".update_succeed"
       redirect_to @user

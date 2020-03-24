@@ -105,6 +105,7 @@ en:
       email: "Email"
       phone: "Phone"
       gender: "Gender"
+      status: "Account status"
       submit: "Submit"
     correct_user:
       not_allow: "Not allow!"
@@ -114,6 +115,7 @@ en:
       follow: "Follow"
     unfollow:
       unfollow: "Unfollow"
+      cancel: "Cancel request"
     follow_form:
       you: "You"
       count_posts:
@@ -152,6 +154,12 @@ en:
   relationships:
     find_user:
       invalid_user: "Invalid user!"
+    create:
+      create_failed: "Follow failed"
+    destroy:
+      error_destroy: "Error destroy"
+    update:
+      error_update: "Error update"
   posts:
     post_form:
       create_post: Create Post
@@ -169,8 +177,8 @@ en:
       update_fail: Fail to update post. Try again
     edit:
       edit_post: Edit post
-    card_content:
     show:
+      not_accept: "Not accept"
       count_like:
         zero: ""
         one: "%{count} Like"
@@ -268,7 +276,11 @@ en:
       like_comment_notif:
         like_comment: "liked your comment"
       mention_notif:
-        mention: mentioned you
+        mention: "mentioned you"
+      request_notif:
+        request: "sent you a tracking request"
+      accept_notif:
+        accept: "has accepted your tracking request"
     exists_notification:
       notif: "Notification"
       mark_all: "Mark all as read"
@@ -280,3 +292,10 @@ en:
       error_update: "Not yet able to send notifications to others"
     destroy:
       error_destroy: "Not remove this notification"
+    accept_request:
+      confirm: "Confirm"
+    cancel_request:
+      refuse: "Refuse"
+    active_relationship:
+      confirmed: "Confirmed"
+      refused: "Refused"

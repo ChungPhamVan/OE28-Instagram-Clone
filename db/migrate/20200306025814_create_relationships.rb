@@ -3,6 +3,7 @@ class CreateRelationships < ActiveRecord::Migration[6.0]
     create_table :relationships do |t|
       t.integer :follower_id
       t.integer :followed_id
+      t.integer :status, default: 0
 
       t.timestamps
     end

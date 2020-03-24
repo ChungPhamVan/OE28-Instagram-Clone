@@ -1,0 +1,12 @@
+<% if accept_relationship? notification %>
+  <div class="badge badge-primary text-wrap confirmed_refused rounded-0 ">
+    <%= t ".confirmed" %>
+  </div>
+<% elsif un_accept_relationship? notification %>
+  <div class="w-100 active_relationship">
+    <%= render partial: "notifications/accept_request",
+      locals: {relationship: get_relationship_by_notif(notification)} %>
+    <%= render partial: "notifications/cancel_request",
+      locals: {relationship: get_relationship_by_notif(notification)} %>
+  </div>
+<% end %>

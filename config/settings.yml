@@ -17,6 +17,10 @@ user:
   gender_female: 0
   gender_other: 2
   per_of_page: 10
+  public_mode: 0
+  private_mode: 1
+  public_mode_text: "public_mode"
+  private_mode_text: "private_mode"
 favicon_image: "favicon.png"
 disable_link: "javascript:void(0)"
 post:
@@ -43,6 +47,8 @@ notification:
   reply: 3
   like_comment: 4
   mention: 5
+  request: 6
+  accept: 7
   update: "update"
   delete: "delete"
   read: 1
@@ -51,5 +57,10 @@ notification:
   type_like: "like"
   type_comment: "comment"
   type_reply: "reply"
+  type_request: "request"
+  type_accept: "accept"
   type_like_comment: "like_comment"
   type_mention: "mention"
+relationship:
+  accept: 0
+  un_accept: 1

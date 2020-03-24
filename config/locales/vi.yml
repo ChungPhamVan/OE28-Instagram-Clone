@@ -102,6 +102,7 @@ vi:
       email: "Email"
       phone: "Điện thoại"
       gender: "Giới tính"
+      status: "Trạng thái tài khoản"
       submit: "Gửi thay đổi"
     correct_user:
       not_allow: "Không cho phép!"
@@ -111,6 +112,7 @@ vi:
       follow: "Theo dõi"
     unfollow:
       unfollow: "Bỏ theo dõi"
+      cancel: "Hủy yêu cầu"
     follow_form:
       you: "Bạn"
       count_posts:
@@ -149,10 +151,12 @@ vi:
   relationships:
     find_user:
       invalid_user: "Sai người dùng!"
-  posts:
-    post_form: 
-      create_post: Đăng bài
-      description: Mô tả cho bài đăng
+    create:
+      create_failed: "Không thể theo dõi"
+    destroy:
+      error_destroy: "Không thể xóa"
+    update:
+      error_update: "Không thể cập nhật"
   posts:
     edit_form:
       description: Mô tả cho bài đăng 
@@ -165,6 +169,8 @@ vi:
     destroy:
       destroy_success: Post has been deleted successfully
       destroy_failed: Fail to delete post
+    show:
+      not_accept: "Không được phép"
     card_stat:
       count_like:
         other: "%{count} lượt thích"
@@ -259,18 +265,23 @@ vi:
       reply: "đã trả lời bình luận của bạn trong một bài viết"
       update: "Đánh dấu đã đọc"
       delete: "Xóa"
-    follow_notif:
-      follow: "đang theo dõi bạn"
-    like_notif:
-      like: "đã thích một bài viết của bạn"
-    comment_notif:
-      comment: "đã bình luận trong một bài viết của bạn"
-    reply_notif:
-      reply: "đã trả lời bình luận của bạn trong một bài viết"
-    like_comment_notif:
-      like_comment: "thích bình luận của bạn"
-    mention_notif:
-      mention: nhắc đến bạn
+    type_notif:
+      follow_notif:
+        follow: "đang theo dõi bạn"
+      like_notif:
+        like: "đã thích một bài viết của bạn"
+      comment_notif:
+        comment: "đã bình luận trong một bài viết của bạn"
+      reply_notif:
+        reply: "đã trả lời bình luận của bạn trong một bài viết"
+      like_comment_notif:
+        like_comment: "thích bình luận của bạn"
+      mention_notif:
+        mention: nhắc đến bạn
+      request_notif:
+        request: "đã gửi cho bạn một yêu cầu theo dõi"
+      accept_notif:
+        accept: "đã chấp nhận yêu cầu theo dõi của bạn"
     exists_notification:
       notif: "Thông baó"
       mark_all: "Đánh dấu tất cả là đã đọc"
@@ -282,3 +293,10 @@ vi:
       error: "Chưa thể gửi thông báo cho người khác"
     destroy:
       error_destroy: "Không thể xóa thông báo này"
+    accept_request:
+      confirm: "Xác nhận"
+    cancel_request:
+      refuse: "Từ chối"
+    active_relationship:
+      confirmed: "Đã xác nhận"
+      refuse: "Đã từ chối"

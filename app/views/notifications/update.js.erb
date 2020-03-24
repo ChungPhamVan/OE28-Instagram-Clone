@@ -2,9 +2,9 @@ var message = '<%= @messages %>';
 if(!message || message === '') {
   var type_action = '<%= @type_action %>';
   if(type_action === 'update') {
-    $('#notification_<%= @notif.id %>').parent().addClass('read');
+    $('#notification_<%= @notif.id %>').addClass('read');
     $('#notification_<%= @notif.id %>').find('.update_submit').remove();
   } else {
-    $('#notification_<%= @notif.id %>').parent().remove();
+    $('#notification_<%= @notif.id %>').remove();
   }
 }

@@ -1,3 +1,7 @@
 <%= form_for get_relationship(user), html: { method: :delete }, remote: true do |f| %>
-  <%= f.submit t(".unfollow"), class: "btn btn-danger" %>
+  <% if get_relationship(user).accept? %>
+    <%= f.submit t(".unfollow"), class: "btn btn-danger" %>
+  <% else %>
+    <%= f.submit t(".cancel"), class: "btn btn-info" %>
+  <% end %>
 <% end %>

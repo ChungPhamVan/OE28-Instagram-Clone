@@ -4,6 +4,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   enum gender: {female: 0, male: 1, other: 2}
   enum role: {user: 0, admin: 1}
+  enum status: {public_mode: 0, private_mode: 1}
 
   has_many :posts, dependent: :destroy
   has_many :active_relationships, class_name: Relationship.name,
@@ -58,7 +59,7 @@ class User < ApplicationRecord
 
   USER_PARAMS = %i(email name username password password_confirmation).freeze
   USER_PARAMS_UPDATE = %i(email name username website
-                          bio phone gender avatar_image).freeze
+                          bio phone gender status avatar_image).freeze
 
   class << self
     def digest string

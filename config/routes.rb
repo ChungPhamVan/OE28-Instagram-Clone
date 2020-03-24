@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
 
     resources :comments, only: %i(update destroy)
-    resources :relationships, only: %i(create destroy)
+    resources :relationships, only: %i(update create destroy)
     resources :likes, :bookmarks, only: %i(create destroy)
     resources :searches, only: :index
     resources :notifications, only: %i(index update destroy)

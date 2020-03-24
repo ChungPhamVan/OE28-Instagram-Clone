@@ -9,9 +9,24 @@ module UserHelper
     end
   end
 
+  def status_account user
+    case user.status
+    when Settings.user.public_mode_text
+      Settings.user.public_mode
+    when Settings.user.private_mode_text
+      Settings.user.private_mode
+    end
+  end
+
   def arr_gender
     User.genders.map do |key, value|
       [key, value]
+    end
+  end
+
+  def arr_status
+    User.statuses.map do |key, value|
+      [key.chomp("_user").capitalize, value]
     end
   end
 
@@ -33,5 +48,14 @@ module UserHelper
     else
       "users/follow"
     end
+  end
+
+  def get_status_relationship user
+    user.public_mode? ? Settings.relationship.accept : Settings.relationship.un_accept
+  end
+
+  def display_gallery? user
+    relationship = Relationship.find_by followed_id: user.id, follower_id: current_user.id
+    user.public_mode? || (relationship.present? && relationship.accept?)
   end
 end

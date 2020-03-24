@@ -51,9 +51,14 @@ class PostsController < ApplicationController
 
   def show
     @title = "#{@post.user_name} - #{@post.description}"
+    return if display_post? @post.user
+
+    flash[:danger] = t ".not_accept"
+    redirect_to root_path
   end
 
   private
+
   def post_params
     params.require(:post).permit(:description, images: [])
   end

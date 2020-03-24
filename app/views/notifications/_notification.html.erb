@@ -1,32 +1,36 @@
-<div class="m-0 box_notif_item <%= mark_read(notification) %>" >
-  <%= link_to get_post_user(notification),
-    class: "item-notif ml-2 pr-1",
-    id: "notification_".concat(notification.id.to_s) do %>
-    <%= image_tag display_avatar_image(notification.sender),
-        class: "instagram-card-user-image d-block avatar_image" %>
-    <div class="time-text">
-      <div class="name_text">
-        <span class="mr-1"><%= notification.sender_username %></span>
-        <%= render_type_notifications notification %>
+<div class="m-0 box_notif_item <%= mark_read(notification) %> d-block" id=<%= "notification_".concat(notification.id.to_s) %> >
+  <div class="w-100 d-flex">
+    <%= link_to get_post_user(notification),
+      class: "item-notif ml-2 pr-1" do %>
+      <%= image_tag display_avatar_image(notification.sender),
+          class: "instagram-card-user-image d-block avatar_image" %>
+      <div class="time-text">
+        <div class="name_text">
+          <span class="mr-1"><%= notification.sender_username %></span>
+          <%= render_type_notifications notification %>
+        </div>
+        <div class="time">
+          <%= time_ago_in_words notification.created_at %>
+        </div>
       </div>
-      <div class="time">
-        <%= time_ago_in_words notification.created_at %>
+    <% end %>
+    <div class="setting">
+      <div class="dropdown" style="float:right;">
+        <i class="fa fa-cog dropbtn dropbtn_icon"></i>
+        <div class="dropdown-content dropdown-content-notif">
+        <% if notification.unread? %>
+          <%= link_to t(".update"), Settings.disable_link, class: "update_submit" %>
+        <% end %>
+        <%= link_to t(".delete"), Settings.disable_link, class: "delete_submit" %>
+        <div class="form_notif_update_delete">
+          <%= render partial: "notifications/form_update", locals: {notification: notification} %>
+          <%= render partial: "notifications/form_destroy", locals: {notification: notification} %>
+        </div>
+        </div>
       </div>
     </div>
-  <% end %>
-  <div class="setting">
-    <div class="dropdown" style="float:right;">
-      <i class="fa fa-cog dropbtn dropbtn_icon"></i>
-      <div class="dropdown-content dropdown-content-notif">
-      <% if notification.unread? %>
-        <%= link_to t(".update"), Settings.disable_link, class: "update_submit" %>
-      <% end %>
-      <%= link_to t(".delete"), Settings.disable_link, class: "delete_submit" %>
-      <div class="form_notif_update_delete">
-        <%= render partial: "notifications/form_update", locals: {notification: notification} %>
-        <%= render partial: "notifications/form_destroy", locals: {notification: notification} %>
-      </div>
-      </div>
-    </div>
+  </div>
+  <div class="badge-confirm-cancel d-flex justify-content-end">
+    <%= render partial: "notifications/active_relationship", locals: {notification: notification} %>
   </div>
 </div>

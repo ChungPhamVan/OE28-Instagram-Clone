@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_024103) do
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_024103) do
     t.string "phone"
     t.integer "gender", default: 2
     t.integer "role", default: 0
+    t.integer "status", default: 0
     t.string "remember_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

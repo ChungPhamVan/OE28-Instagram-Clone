@@ -2,3 +2,9 @@ $('#people__column__<%= @user.id %>')
   .html('<%= j render(partial: "users/follow", locals: {user: @user}) %>');
 $('span#followers')
   .html('<%= @user.followers.size %>');
+
+<% @notifications.each do |notif| %>
+  var notifId = 'notification_'.concat('<%= notif.id.to_s %>');
+  $('#' + notifId).find('.badge-confirm-cancel')
+    .html('<div class="badge badge-danger text-wrap confirmed_refused rounded-0 "><%= @message_refused %></div>');
+<% end %>

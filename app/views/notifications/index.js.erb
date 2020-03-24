@@ -1,8 +1,8 @@
 $('#frame-notification')
-  .append('<%= j render partial: "notifications/notification",
-    collection: @notifications %>');
+  .append('<%= j render partial: "notifications/notification", collection: @notifications %>');
 
 var sizeof_notification = '<%= @notifications.size %>';
-if(parseInt(sizeof_notification) == 0) {
+var previews_per_page = '<%= Settings.user.previews_per_page %>';
+if(parseInt(sizeof_notification) <= parseInt(previews_per_page)) {
   $('#load-notifications').hide();
 }

@@ -41,6 +41,27 @@ module NotificationsHelper
       render "notifications/type_notif/like_comment_notif"
     when Settings.notification.type_mention
       render "notifications/type_notif/mention_notif"
+    when Settings.notification.type_request
+      render "notifications/type_notif/request_notif"
+    when Settings.notification.type_accept
+      render "notifications/type_notif/accept_notif"
     end
+  end
+
+  def get_relationship_by_notif notification
+    Relationship.find_by followed_id: notification.receiver_id,
+                         follower_id: notification.sender_id
+  end
+
+  def display_active_notif? notification
+    notification.request? && get_relationship_by_notif(notification).present?
+  end
+
+  def accept_relationship? notification
+    (display_active_notif? notification) && get_relationship_by_notif(notification).accept?
+  end
+
+  def un_accept_relationship? notification
+    (display_active_notif? notification) && get_relationship_by_notif(notification).un_accept?
   end
 end
