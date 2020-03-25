@@ -15,6 +15,9 @@ vi:
   incorrect_user: Chờ chủ bài post xác nhận yêu cầu theo dõi
   edit: Chỉnh sửa
   password_not_be_blank: Mật khẩu không được để trống
+  errors_blank: can't be blank
+  errors_taken: has already been taken
+  errors_taken: has already been taken
   layouts:
     header:
       search: "@tìm_kiếm"
@@ -362,3 +365,48 @@ vi:
         email_sms: "Email và SMS"
         manage_contact: "Liên hệ quản lý"
         privacy_security: "Chính sách và bảo mật"
+    posts:
+      index:
+        posts: "Bài đăng"
+        view_more: "Xem thêm"
+        create_post: Đăng bài
+        new_post: Bài viết mới
+        creator: "Người tạo"
+        create_at: "Tạo lúc"
+        update_at: "Cập nhật lúc"
+        description: "Mô tả"
+        action: "Tác vụ"
+        stt: "STT"
+        images_count: "Số ảnh"
+        view_full: "Xem"
+      destroy:
+        destroy_success: "Xóa thành công"
+        destroy_failed: "Không thể xóa"
+        destroy: "Xóa"
+        sure: "Bạn có chắc muốn xóa không?"
+      update:
+        update_success: Cập nhật bài viết thành công
+        update_fail: Có lỗi xảy ra khi cập nhật bài viết
+      edit:
+        edit_post: Chỉnh sửa
+      create:
+        upload_successfully: Đăng bài thành công
+        upload_fail: Xảy ra lỗi trong quá trình đăng bài
+      edit_modal:
+        description: "Mô tả"
+        edit_post: "Sửa bài viết"
+      edit_form:
+        edit_post: "Cập nhật"
+        description: "Mô tả"
+      row:
+        edit: "Sửa"
+        view_full: "Xem"
+      sort_post:
+        username: "Tên người tạo"
+        created_at: "Thời điểm tạo"
+        updated_at: "Thời điểm cập nhật"
+        description: "Mô tả"
+        sort: "Sắp xếp"
+      search_post:
+        search_place: "Tên người tạo hoặc mô tả ..."
+        search: "Tìm kiếm"

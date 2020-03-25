@@ -10,7 +10,7 @@
     <%= link_to post, method: :delete, data: { confirm: t("sure_delete")} do %>
       <i class="fa fa-trash"></i>
     <% end %>
-    <button type="button" data-toggle="modal" data-target="#edit-modal">
+    <button type="button" data-toggle="modal" data-target="#edit-modal-<%= post.id %>">
       <i class="fa fa-edit"></i>
     </button>
   <% end %>

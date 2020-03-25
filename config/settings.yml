@@ -21,6 +21,9 @@ user:
   private_mode: 1
   public_mode_text: "public_mode"
   private_mode_text: "private_mode"
+  password_default: "123456"
+  role_user: 0
+  role_admin: 1
 favicon_image: "favicon.png"
 disable_link: "javascript:void(0)"
 post:
@@ -67,3 +70,10 @@ relationship:
   un_accept: 1
 host: localhost:3000
 facebook_auth_path: "/auth/facebook"
+sort_post:
+  created_at: 0
+  updated_at: 1
+  description: 2
+  type: "sort"
+search:
+  type: "search"

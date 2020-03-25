@@ -1,5 +1,5 @@
-<%= form_for @post do |f| %>
-  <%= render "shared/error_messages", object: @post %>
+<%= form_for post, url: url_create_post do |f| %>
+  <%= render "shared/error_messages", object: post %>
   <div class="form-group">
     <%= f.text_area :description, placeholder: t(".description"),
       class: "form-control" %>

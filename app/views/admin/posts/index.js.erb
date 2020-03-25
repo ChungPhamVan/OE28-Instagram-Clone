@@ -1,0 +1,17 @@
+var sort_value = '<%= @post_hash[:sort_value] %>';
+var text_search = '<%= @post_hash[:text_search] %>';
+var page = '<%= @post_hash[:page] %>';
+$('#load-more-posts-table').show();
+var posts_size = '<%= @post_hash[:posts].size %>';
+var previews_per_page = '<%= Settings.user.previews_per_page %>';
+if (page.length === 0) {
+  $('table tbody').html('<%= j render partial: "admin/posts/row", collection: @post_hash[:posts], as: :post %>');
+  if(parseInt(posts_size) < parseInt(previews_per_page)) {
+    $('#load-more-posts-table').hide();
+  }
+} else {
+  $('table tbody').append('<%= j render partial: "admin/posts/row", collection: @post_hash[:posts], as: :post %>');
+  if(parseInt(posts_size) < parseInt(previews_per_page)) {
+    $('#load-more-posts-table').hide();
+  }
+}

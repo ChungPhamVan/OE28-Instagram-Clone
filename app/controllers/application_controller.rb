@@ -65,11 +65,23 @@ class ApplicationController < ActionController::Base
     params.require(:user).permit User::USER_PARAMS_UPDATE
   end
 
+  def post_params
+    params.require(:post).permit Post::POST_PARAMS
+  end
+
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
 
     flash[:danger] = t "users.load_user.not_find_user"
+    redirect_to root_path
+  end
+
+  def load_post
+    @post = Post.find_by id: params[:id]
+    return if @post
+
+    flash[:danger] = t "post_not_found"
     redirect_to root_path
   end
 

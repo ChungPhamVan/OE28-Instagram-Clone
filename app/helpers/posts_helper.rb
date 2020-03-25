@@ -33,4 +33,18 @@ module PostsHelper
   def count_like object
     User.likers_to_likeable(object.id, object.class.name).size
   end
+
+  def url_update_post post
+    current_user.admin? ? admin_post_path(post) : post_path(post)
+  end
+
+  def url_create_post
+    current_user&.admin? ? admin_posts_path : posts_path
+  end
+
+  def numerical_order post_counter, page
+    return post_counter + 1 if page.blank?
+
+    Settings.user.previews_per_page * (page.to_i - 1) + post_counter + 1
+  end
 end

@@ -19,7 +19,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <%= render "posts/post_form" %>
+          <%= render partial: "posts/post_form", locals: {post: @post} %>
         </div>
       </div>
     </div>

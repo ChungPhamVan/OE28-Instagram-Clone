@@ -1,0 +1,8 @@
+<div class="w-50 d-flex justify-content-between">
+  <select class="form-control form-control-sm w-75 sort_value">
+    <option value=<%= Settings.sort_post.created_at %> ><%= t ".created_at" %></option>
+    <option value=<%= Settings.sort_post.updated_at %> ><%= t ".updated_at" %></option>
+    <option value=<%= Settings.sort_post.description %> ><%= t ".description" %></option>
+  </select>
+  <button class="btn btn-primary btn-sm sort_btn"><%= t ".sort" %></button>
+</div>

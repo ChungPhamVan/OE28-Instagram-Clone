@@ -1,0 +1,3 @@
+$('#description-<%= @post.id %>').html('<%= display_description @post.description %>');
+$('#updated-at-<%= @post.id %>').html('<%= time_ago_in_words @post.updated_at %>');
+$('#edit-modal-<%= @post.id %>').modal('hide');

@@ -1,16 +1,17 @@
-<div class="modal fade" id="edit-modal-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<div class="modal fade" id="edit-modal-<%= post.id %>" tabindex="-1"
+  role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalScrollableTitle">
-          <%= t "edit" %>
+          <%= t ".edit_post" %>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <%= render "posts/edit_form", post: post %>
+        <%= render partial: "admin/posts/edit_form", locals:{post: post} %>
       </div>
     </div>
   </div>

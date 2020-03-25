@@ -1,0 +1,54 @@
+<%= provide :title, t(".posts") %>
+<%= provide :active_post, t(".posts") %>
+<% provide :button_text, t(".create_post") %>
+<%= render "admin/button_admin" %>
+<h1 class="text-center"><%= @post_hash[:title] %></h1>
+<div class="frame-posts-admin" id="feeds">
+  <div>
+    <div class="d-flex justify-content-between align-items-center">
+      <button type="button" class="btn btn-primary new-btn m-0" 
+        data-toggle="modal" data-target="#new-post">
+          <%= t ".new_post" %>
+      </button>
+      <%= render "sort_post" %>
+    </div>
+    <%= render "search_post" %>
+  </div>
+  <div class="modal" id="new-post" tabindex="-1" role="dialog" data-backdrop="static"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><%= t ".new_post" %></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render partial: "posts/post_form", locals: {post: @post_hash[:post]} %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover mt-5">
+    <thead>
+      <tr>
+        <th scope="col"><%= t ".stt" %></th>
+        <th scope="col"><%= t ".creator" %></th>
+        <th scope="col"><%= t ".description" %></th>
+        <th scope="col"><%= t ".images_count" %></th>
+        <th scope="col"><%= t ".create_at" %></th>
+        <th scope="col"><%= t ".update_at" %></th>
+        <th scope="col"><%= t ".action" %></th>
+        <th scope="col"><%= t ".view_full" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "admin/posts/row", collection: @post_hash[:posts], as: :post %>
+    </tbody>
+  </table>
+  <div class="btn" id="load-more-posts-table" data_id="<%= current_user.id %>">
+    <%= t ".view_more" %>
+  </div>
+</div>
+<%= javascript_pack_tag "load_posts", "data-turbolinks-track": "reload" %>

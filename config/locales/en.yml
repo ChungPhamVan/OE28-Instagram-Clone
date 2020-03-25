@@ -17,6 +17,9 @@ en:
   list: List
   close: Close
   password_not_be_blank: Password can't be blank hihi
+  errors_blank: can't be blank
+  errors_taken: has already been taken
+  errors_taken: has already been taken
   layouts:
     header:
       search: "@search"
@@ -361,3 +364,48 @@ en:
         email_sms: "Email and SMS"
         manage_contact: "Manage Contacts"
         privacy_security: "Privacy and Security"
+    posts:
+      index:
+        posts: "System posts"
+        view_more: "View more"
+        create_post: Create post
+        new_post: New post
+        creator: "Creator"
+        create_at: "Created at"
+        update_at: "Updated at"
+        description: "Description"
+        action: "Action"
+        stt: "STT"
+        images_count: "Image count"
+        view_full: "View full"
+      destroy:
+        destroy_success: "Delete success"
+        destroy_failed: "Delete failed"
+        destroy: "Delete"
+        sure: "Are you want to delete this post sure?"
+      update:
+        update_success: Updated post successfully
+        update_fail: Fail to update post. Try again
+      edit:
+        edit_post: Edit post
+      create:
+        upload_successfully: Uploaded post successfully
+        upload_fail: Fail to upload image
+      edit_modal:
+        description: "Description"
+        edit_post: "Edit post"
+      edit_form:
+        edit_post: "Update"
+        description: "Description"
+      row:
+        edit: "Edit"
+        view_full: "View full"
+      sort_post:
+        username: "Username of creator"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        description: "Description"
+        sort: "Sort"
+      search_post:
+        search_place: "Username creator or description ..."
+        search: "Search"

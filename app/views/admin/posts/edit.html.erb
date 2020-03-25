@@ -1,4 +1,4 @@
 <% provide :title, t(".edit_post") %>
 <% provide :button_text, t(".edit_post") %>
 <h1><%= t ".edit_post" %></h1>
-<%= render partial: "post_form", locals: {post: @post} %>
+<%= render "posts/edit_form" %>

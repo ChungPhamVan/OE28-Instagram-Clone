@@ -1,0 +1,5 @@
+<%= form_for post, url: admin_post_path(post),
+  html: { method: :delete, id: post.id }, remote: true do |f| %>
+  <%= f.submit t(".destroy"), class: "btn btn-outline-danger submit_delete_user" %>
+<% end %>
+<div class="sure_delete d-none"><%= t ".sure" %></div>

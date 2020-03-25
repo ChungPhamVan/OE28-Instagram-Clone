@@ -1,0 +1,27 @@
+<tr>
+  <th scope="row" id="stt-<%= post.id %>" class="stt"><%= numerical_order post_counter, @post_hash[:page] %></th>
+  <td>
+    <%= link_to post.user, class: "instagram-card-username" do %>
+      <%= post.user_username %>
+    <% end %>
+  </td>
+  <td id="description-<%= post.id %>">
+    <%= display_description post.description %>
+  </td>
+  <td><%= post.images.size %></td>
+  <td><%= time_ago_in_words post.created_at %></td>
+  <td id="updated-at-<%= post.id %>"><%= time_ago_in_words post.updated_at %></td>
+  <td>
+    <div class="d-flex justify-content-between">
+      <button type="button" data-toggle="modal" data-target="#edit-modal-<%= post.id %>"
+        class="btn btn-primary">
+        <%= t ".edit" %>
+      </button>
+      <%= render partial: "admin/posts/destroy", locals: {post: post} %>
+    </div>
+  </td>
+  <td>
+    <%= link_to t(".view_full"), post %>
+  </td>
+</tr>
+<%= render partial: "admin/posts/edit_modal", locals: {post: post} %>

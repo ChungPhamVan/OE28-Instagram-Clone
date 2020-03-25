@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   include PostConcern
 
+  POST_PARAMS = [:description, images: []].freeze
+
   belongs_to :user
   has_many :post_hashtags, dependent: :destroy
   has_many :hashtags, through: :post_hashtags
@@ -18,6 +20,8 @@ class Post < ApplicationRecord
   validate :image_presence
 
   scope :order_by_created_at, ->{order created_at: :desc}
+  scope :order_by_updated_at, ->{order updated_at: :desc}
+  scope :order_by_description, ->{order :description}
   scope :feed, (lambda do |user_id|
                   where(user_id: Relationship.following_ids(user_id))
                   .or(where(user_id: user_id))
@@ -39,6 +43,12 @@ class Post < ApplicationRecord
     joins(post_hashtags: :hashtag).where(
       "hashtags.name LIKE :search", search: "%#{sample_string}%"
     ).distinct
+  end)
+  scope :search_by_description_username, (lambda do |sample_string|
+    joins(:user).where(
+      "users.username LIKE :search OR description LIKE :search",
+        search: "%#{sample_string}%"
+    )
   end)
 
   def likers? user

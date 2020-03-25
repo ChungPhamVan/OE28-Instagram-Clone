@@ -41,7 +41,12 @@ end
 
 group :test do
   gem "capybara", ">= 2.15"
+  gem "database_cleaner", "~> 1.5"
+  gem "factory_bot_rails", "~> 5.1", ">= 5.1.1"
+  gem "rspec-rails", "~> 4.0"
+  gem "rspec-support", "~> 3.9", ">= 3.9.2"
   gem "selenium-webdriver"
+  gem "shoulda-matchers", "~> 4.3"
   gem "webdrivers"
 end
 
