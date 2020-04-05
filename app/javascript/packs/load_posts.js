@@ -30,7 +30,7 @@ $(document).ready(function() {
     sort_val = $(".sort_value").val();
     url = '/admin/posts';
     type = "sort";
-    loadData(url, { sort_value: sort_val, type: type });
+    loadData(url, { sort_value: sort_val, type: type, text_search: text_search });
   });
   $('#search_input').keyup(function(event) {
     url = '/admin/posts';

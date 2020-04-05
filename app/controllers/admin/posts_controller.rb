@@ -1,11 +1,15 @@
 class Admin::PostsController < ApplicationController
   before_action :logged_in_user, :is_admin
   before_action :load_post, except: %i(index create)
+  before_action :search, :sort, only: :index
 
   def index
+    @posts ||= Post.order_by_created_at
+                   .page(params[:page])
+                   .per Settings.user.previews_per_page
     @post_hash = {
       post: Post.new,
-      posts: get_post_index(params[:page], params[:type], params[:sort_value], params[:text_search]),
+      posts: @posts,
       title: t(".posts"),
       page: params[:page],
       type: params[:type],
@@ -46,26 +50,30 @@ class Admin::PostsController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
-  def get_post_index page, type, sort_value, text_search
-    if type.eql? Settings.sort_post.type
-      case sort_value.to_i
-      when Settings.sort_post.updated_at
-        Post.order_by_updated_at
-            .page(page).per Settings.user.previews_per_page
-      when Settings.sort_post.description
-        Post.order_by_description
-            .page(page).per Settings.user.previews_per_page
-      else
-        Post.order_by_created_at
-            .page(page).per Settings.user.previews_per_page
-      end
-    elsif type.eql? Settings.search.type
-      Post.search_by_description_username(text_search)
-          .order_by_created_at
-          .page(page).per Settings.user.previews_per_page
-    else
-      Post.order_by_created_at
-          .page(page).per Settings.user.previews_per_page
-    end
+  private
+
+  def sort
+    return unless params[:type].eql? Settings.sort_post.type
+
+    posts_search = Post.search_by_description_username(params[:text_search])
+    @posts = case params[:sort_value].to_i
+             when Settings.sort_post.updated_at
+               posts_search.order_by_updated_at
+                           .page(params[:page]).per Settings.user.previews_per_page
+             when Settings.sort_post.description
+               posts_search.order_by_description
+                           .page(params[:page]).per Settings.user.previews_per_page
+             else
+               posts_search.order_by_created_at
+                           .page(params[:page]).per Settings.user.previews_per_page
+             end
+  end
+
+  def search
+    return unless params[:type].eql? Settings.search.type
+
+    @posts = Post.search_by_description_username(params[:text_search])
+                 .order_by_created_at
+                 .page(params[:page]).per Settings.user.previews_per_page
   end
 end
